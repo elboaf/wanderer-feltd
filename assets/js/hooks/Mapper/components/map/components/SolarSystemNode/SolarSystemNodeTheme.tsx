@@ -55,12 +55,11 @@ export const SolarSystemNodeTheme = memo((props: NodeProps<MapSolarSystemType>) 
             </KillsCounter>
           )}
 
-          {nodeVars.labelCustom !== '' && (
-            <div className={clsx(classes.Bookmark, MARKER_BOOKMARK_BG_STYLES.custom)}>
-              <span className="[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">{nodeVars.labelCustom}</span>
-            </div>
-          )}
-
+<div className={clsx(classes.Bookmark, MARKER_BOOKMARK_BG_STYLES.custom)}>
+  <span className="[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
+    {nodeVars.isWormhole ? nodeVars.systemName : nodeVars.regionName}
+  </span>
+</div>
           {nodeVars.labelsInfo.map(x => (
             <div key={x.id} className={clsx(classes.Bookmark, MARKER_BOOKMARK_BG_STYLES[x.id])}>
               {x.shortName}
@@ -104,7 +103,7 @@ export const SolarSystemNodeTheme = memo((props: NodeProps<MapSolarSystemType>) 
                   '[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] flex-grow overflow-hidden text-ellipsis whitespace-nowrap',
                 )}
               >
-                {nodeVars.systemName}
+{nodeVars.customName ? nodeVars.customName : nodeVars.systemName}
               </div>
 
               {nodeVars.isWormhole && (
@@ -121,20 +120,12 @@ export const SolarSystemNodeTheme = memo((props: NodeProps<MapSolarSystemType>) 
             </div>
 
             <div className={clsx(classes.BottomRow, 'flex items-center justify-between')}>
-              {nodeVars.customName && (
-                <div className="[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] whitespace-nowrap overflow-hidden text-ellipsis mr-0.5">
-                  {nodeVars.customName}
-                </div>
-              )}
-
-              {!nodeVars.isWormhole && !nodeVars.customName && (
-                <div className="[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] whitespace-nowrap overflow-hidden text-ellipsis mr-0.5">
-                  {nodeVars.regionName}
-                </div>
-              )}
-
-              {nodeVars.isWormhole && !nodeVars.customName && <div />}
-
+{!nodeVars.isWormhole && nodeVars.customName && (
+  <div className="[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] whitespace-nowrap overflow-hidden text-ellipsis mr-0.5">
+    {nodeVars.systemName}
+  </div>
+)}
+{(nodeVars.isWormhole || !nodeVars.customName) && <div />}
               <div className="flex items-center gap-1 justify-end">
                 <div className={clsx('flex items-center gap-1')}>
                   {nodeVars.locked && <i className={clsx(PrimeIcons.LOCK, classes.lockIcon)} />}

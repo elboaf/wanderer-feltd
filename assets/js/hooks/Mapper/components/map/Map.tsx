@@ -124,7 +124,7 @@ const MapComp = ({
   const { handleConnectionContext, ...connectionCtxProps } = useContextMenuConnectionHandlers();
   const { update } = useMapState();
   const { variant, gap, size, color } = useBackgroundVars(theme);
-  const { isPanAndDrag, nodeComponent, connectionMode } = getBehaviorForTheme(theme || 'default');
+  const { isPanAndDrag, nodeComponent, connectionMode, snapGrid } = getBehaviorForTheme(theme || 'default');
 
   const refVars = useRef({ onChangeViewport });
   refVars.current = { onChangeViewport };
@@ -248,6 +248,7 @@ const MapComp = ({
           nodeTypes={nodeTypes}
           connectionMode={connectionMode}
           snapToGrid
+          snapGrid={snapGrid}
           nodeDragThreshold={10}
           onNodeDragStop={handleDragStop}
           onSelectionDragStop={handleSelectionDragStop}

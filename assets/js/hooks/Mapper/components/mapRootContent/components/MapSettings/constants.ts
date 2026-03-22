@@ -153,6 +153,7 @@ export const THEME_OPTIONS = [
   { label: 'Pathfinder', value: AvailableThemes.pathfinder },
   { label: 'High-contrast', value: AvailableThemes.accessibleDark },
   { label: 'High-contrast Large', value: AvailableThemes.accessibleLargeColorblind },
+  { label: 'Feltd', value: AvailableThemes.feltd },
 ];
 
 export const THEME_SETTING: SettingsListItem = {

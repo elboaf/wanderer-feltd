@@ -1,0 +1,55 @@
+@use "sass:color";
+@use './eve-common-variables';
+@use './eve-common';
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+$homeBase: rgb(197, 253, 67);
+$homeAlpha: rgba(197, 253, 67, 0.32);
+$homeDark30: color.adjust($homeBase, $lightness: -30%);
+
+.feltd-theme {
+  /* -- Override values from the default theme -- */
+  --rf-bg-color: #000000;
+  --rf-soft-bg-color: #282828;
+  --rf-node-soft-bg-color: #313335;
+  --rf-node-font-weight: bold;
+  --rf-text-color: #adadad;
+  --rf-region-name: var(--rf-text-color);
+  --rf-custom-name: var(--rf-text-color);
+  --rf-bg-variant: "lines";
+  --rf-bg-gap: 34;
+  --rf-snap-size: 17;
+  --rf-bg-pattern-color: #313131;
+  --rf-local-counter-font-weight: 700;
+
+  /* Additional node-specific overrides */
+  --rf-node-line-height: normal;
+  --rf-node-font-family: 'Oxygen', sans-serif;
+  --rf-tag-color: #fbbf24;
+
+  /* -- theme-specific variables -- */
+  --eve-effect-pulsar: #428bca;
+  --eve-effect-magnetar: #e06fdf;
+  --eve-effect-wolfRayet: #e28a0d;
+  --eve-effect-blackHole: #000000;
+  --eve-effect-cataclysmicVariable: #ffffbb;
+  --eve-effect-redGiant: #d9534f;
+
+  --eve-wh-type-color-high: #5cb85c;
+  --eve-wh-type-color-low: #e28a0d;
+  --eve-wh-type-color-null: #d9534f;
+  --eve-wh-type-color-c1: #428bca;
+  --eve-wh-type-color-c2: #428bca;
+  --eve-wh-type-color-c3: #e28a0d;
+  --eve-wh-type-color-c4: #e28a0d;
+  --eve-wh-type-color-c5: #d9534f;
+  --eve-wh-type-color-c6: #d9534f;
+  --eve-wh-type-color-c13: #7986cb;
+  --eve-wh-type-color-drifter: #44aa82;
+
+  --rf-node-local-counter: #5cb85c;
+  --rf-has-user-characters: #ffc75d;
+
+  --eve-solar-system-status-home:                #{$homeAlpha};
+  --eve-solar-system-status-color-home:          #{$homeBase};
+}
