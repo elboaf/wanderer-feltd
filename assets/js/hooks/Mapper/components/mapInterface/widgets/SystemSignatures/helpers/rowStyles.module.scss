@@ -2,3 +2,11 @@
   font-size: var(--rf-table-font-size, 12px) !important;
   line-height: var(--rf-table-row-line-height, 1.333);
 }
+:global(.p-datatable .p-datatable-tbody > tr.p-highlight) {
+  background: transparent !important;
+  color: inherit !important;
+}
+:global(.p-datatable .p-datatable-tbody > tr.p-highlight:hover) {
+  background: rgba(168, 85, 247, 0.2) !important;
+  color: inherit !important;
+}

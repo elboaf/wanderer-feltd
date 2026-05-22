@@ -103,7 +103,7 @@ export const SystemSettingsDialog = ({ systemId, visible, setVisible }: SystemSe
 
     const labels = new LabelsManager(system.labels || '');
 
-    setName(system.name || '');
+setName(system.name === systemStaticInfo?.solar_system_name ? '' : system.name || '');
     setLabel(labels.customLabel);
     setTemporaryName(system.temporary_name || '');
     setDescription(system.description || '');
@@ -128,7 +128,7 @@ export const SystemSettingsDialog = ({ systemId, visible, setVisible }: SystemSe
         <div className="flex flex-col gap-3 px-2">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-1">
-              <label htmlFor="username">Custom name</label>
+              <label htmlFor="username">Name</label>
 
               <IconField>
                 {name !== systemStaticInfo?.solar_system_name && (
@@ -147,16 +147,16 @@ export const SystemSettingsDialog = ({ systemId, visible, setVisible }: SystemSe
                   id="name"
                   aria-describedby="name"
                   autoComplete="off"
-                  value={name}
+                  value={label}
                   // @ts-expect-error
                   ref={inputRef}
-                  onChange={e => setName(e.target.value)}
+onChange={e => setLabel(e.target.value.toUpperCase())}
                 />
               </IconField>
             </div>
 
             <div className="flex flex-col gap-1">
-              <label htmlFor="label">Custom label</label>
+              <label htmlFor="label">Ticker</label>
 
               <IconField>
                 {label !== '' && (
@@ -175,9 +175,8 @@ export const SystemSettingsDialog = ({ systemId, visible, setVisible }: SystemSe
                   id="label"
                   aria-describedby="label"
                   autoComplete="off"
-                  value={label}
-                  maxLength={5}
-                  onChange={e => setLabel(e.target.value)}
+                  value={name}
+                  onChange={e => setName(e.target.value.toUpperCase())}
                   onInput={handleInput}
                 />
               </IconField>

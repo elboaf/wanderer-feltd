@@ -16,9 +16,9 @@ export function getSignatureRowClass(
     'transition duration-200 my-2 hover:bg-purple-400/20',
   ];
 
-  if (isSelected) {
-    return clsx([...baseCls, 'bg-violet-400/40 hover:bg-violet-300/40']);
-  }
+if (isSelected) {
+    return clsx([...baseCls, '[&_td:first-child]:text-yellow-400']);
+}
 
   if (row.deleted) {
     return clsx([...baseCls, 'bg-red-400/40 hover:bg-red-400/50']);

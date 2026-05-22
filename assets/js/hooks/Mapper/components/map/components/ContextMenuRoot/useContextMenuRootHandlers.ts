@@ -24,7 +24,11 @@ export const useContextMenuRootHandlers = ({ onAddSystem, onCommand }: UseContex
   const [pasteSystemsAndConnections, setPasteSystemsAndConnections] = useState<PasteSystemsAndConnections>();
 
   const handleRootContext = async (e: React.MouseEvent<HTMLDivElement>) => {
-    setPosition(rf.project({ x: e.clientX, y: e.clientY }));
+const raw = rf.project({ x: e.clientX, y: e.clientY });
+setPosition({
+  x: Math.round(raw.x / 238) * 238,
+  y: Math.round(raw.y / 102) * 102,
+});
     e.preventDefault();
     ctxManager.next('ctxRoot', contextMenuRef.current);
     contextMenuRef.current?.show(e);

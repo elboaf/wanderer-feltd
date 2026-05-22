@@ -103,7 +103,7 @@ export const SolarSystemNodeTheme = memo((props: NodeProps<MapSolarSystemType>) 
                   '[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] flex-grow overflow-hidden text-ellipsis whitespace-nowrap',
                 )}
               >
-{nodeVars.customName ? nodeVars.customName : nodeVars.systemName}
+{nodeVars.labelCustom ? nodeVars.labelCustom : nodeVars.systemName}
               </div>
 
               {nodeVars.isWormhole && (
@@ -119,13 +119,18 @@ export const SolarSystemNodeTheme = memo((props: NodeProps<MapSolarSystemType>) 
               )}
             </div>
 
-            <div className={clsx(classes.BottomRow, 'flex items-center justify-between')}>
-{!nodeVars.isWormhole && nodeVars.customName && (
-  <div className="[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] whitespace-nowrap overflow-hidden text-ellipsis mr-0.5">
-    {nodeVars.systemName}
-  </div>
+<div className={clsx(classes.BottomRow, 'flex items-center justify-between')}>
+  <div className="[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] whitespace-nowrap overflow-hidden text-ellipsis mr-0.5 flex gap-1">
+{!nodeVars.isWormhole && nodeVars.labelCustom && (
+  <span>{nodeVars.systemName}</span>
 )}
-{(nodeVars.isWormhole || !nodeVars.customName) && <div />}
+{nodeVars.isWormhole && nodeVars.customName && (
+  <span>{nodeVars.customName}</span>
+)}
+{!nodeVars.isWormhole && nodeVars.customName && (
+  <span>{nodeVars.customName}</span>
+)}
+  </div>
               <div className="flex items-center gap-1 justify-end">
                 <div className={clsx('flex items-center gap-1')}>
                   {nodeVars.locked && <i className={clsx(PrimeIcons.LOCK, classes.lockIcon)} />}
